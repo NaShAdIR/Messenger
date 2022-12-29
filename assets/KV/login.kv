@@ -1,0 +1,87 @@
+MDScreen:
+    name: "login"
+    login: Login
+    password: Password
+
+    FitImage:
+        source: r".\Images\Fitimage.png"
+
+    MDFloatLayout:
+        size_hint: .8, .3
+        pos_hint: {"center_x": .5, "center_y": .87}
+
+        MDLabel:
+            text: "Messenger"
+            text_color: "blue"
+            font_name: "font/mon-amour-one-medium.ttf"
+            font_size: 53
+            pos_hint: {"center_x": .5, "center_y": .3}
+            size_hint: 1, None
+            halign: "center"
+
+    MDFloatLayout:
+        size_hint: 1, 1
+
+        MDTextField:
+            id: Login
+            icon_right: "account"
+            size_hint_x: None
+            width: "320dp"
+            mode: "fill"
+            fill_color_normal: (1, 1, 1, 0.1)
+            fill_color_focus: (1, 1, 1, 0.3)
+            hint_text: "Login"
+            hint_text_color_focus: "black"
+            text_color_focus: "black"
+            pos_hint: {"center_x": .5, "center_y": .6}
+            font_size: "18sp"
+
+
+        MDRelativeLayout:
+            MDTextField:
+                id: Password
+                size_hint_x: None
+                width: "320dp"
+                mode: "fill"
+                fill_color_normal: (1, 1, 1, 0.1)
+                fill_color_focus: (1, 1, 1, 0.3)
+                hint_text: "Password"
+                hint_text_color_focus: "black"
+                text_color_focus: "black"
+                pos_hint: {"center_x": .5, "center_y": .45}
+                password: True
+                font_size: "18sp"
+
+            MDIconButton:
+                icon: "eye-off"
+                pos_hint: {"center_y": .5}
+                theme_text_color: "Hint"
+                pos_hint: {"center_x": .73, "center_y": .45}
+                on_release:
+                    Password.password = False if Password.password is True else True
+
+        MDFillRoundFlatButton:
+            text: "Login"
+            pos: 190, 130
+            size_hint_y: .1
+            size_hint_x: .35
+            md_bg_color: 1, 1, 1, 0.1
+            on_release:
+                app.login()
+
+        MDFillRoundFlatButton:
+            text: "Sing up"
+            pos: 190, 50
+            size_hint_y: .1
+            size_hint_x: .35
+            md_bg_color: 1, 1, 1, 0.1
+            on_release:
+                app.get_sing_up()
+
+        # MDSpinner:
+            # size_hint: None, None
+            # size: dp(48), dp(48)
+            # pos_hint: {'center_x': .5, 'center_y': .5}
+            # determinate: True
+            # active: True if app.spinner else False
+

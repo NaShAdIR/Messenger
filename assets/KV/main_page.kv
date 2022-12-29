@@ -1,0 +1,109 @@
+
+
+
+MDScreen:
+    name: "main"
+    icon: icon
+    username: username
+    #surname: surname
+    listusers: users
+    user_search: user_search
+    users: users
+
+
+    MDFloatLayout:
+        ScrollView:
+            md_bg_color: (1, 1, 1, 0.3)
+            scroll_timeout: 100
+            pos_hint: {"center_x": .5, "center_y": .4}
+            MDList:
+                id: users
+
+        MDNavigationLayout:
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+
+                MDFloatLayout:
+                    pos_hint: {"center_x": .5, "center_y": 1}
+                    size_hint: 1, 1
+
+                    MDIconButton:
+                        icon: "menu"
+                        pos_hint: {"center_x": .05, "center_y": 1}
+                        on_release:
+                            nav_drawer.set_state("open")
+
+                    MDTextFieldRect:
+                        id: user_search
+                        hint_text: 'Search'
+                        mode: "rectangle"
+                        height: "36dp"
+                        size_hint: .8, None
+                        pos_hint: {"center_x": .5, "center_y": 1}
+                        background_color: "white"
+                        # max_text_length: 5
+
+                    MDIconButton:
+                        pos_hint: {"center_x": .95, "center_y": 1}
+                        icon: "account-search-outline"
+                        on_release:
+                            app.search_user()
+
+            MDNavigationDrawer:
+                id: nav_drawer
+                type: "modal"
+                anchor: "left"
+                scrim_color: 0, 0, 0, 1
+                md_bg_color: 1, 1, .8
+
+                ContentNavigationDrawer: # Box
+                    MDFloatLayout:
+                        size_hint: 1, .5
+                        pos_hint: {"center_x": .5, "center_y": .2}
+
+                        FitImage:
+                            id: icon
+                            source: "./images/user.png"
+                            size_hint: (1.105, .8)
+                            pos_hint: {"center_x": .490, "center_y": 1.8}
+
+                        MDIconButton:
+                            icon: "camera"
+                            pos_hint: {"center_x": .85, "center_y": 1.4}
+                            size: ("100dp", "100dp")
+                            size_hint: (None, None)
+                            radius: (50, 50, 50, 50)
+                            md_bg_color: 1, 1, .8
+                            on_release:
+                                app.change_icon()
+
+                        MDLabel:
+                            id: username
+                            font_size: "24sp"
+                            theme_text_color: "Custom"
+                            text_color: "white"
+                            halign: "center"
+                            size_hint_x: .35
+                            size_hint_y: .1
+                            pos_hint: {"center_x": .125, "center_y": 1.5}
+
+                        MDFloatLayout:
+                            pos_hint: {"center_x": .49, "center_y": .8}
+                            MDNavigationDrawerItem:
+                                icon: "gmail"
+                                right_text: "+99"
+                                md_bg_color: 1, 1, .93
+                                text_right_color: "#4a4939"
+                                text: "Requests"
+                                pos_hint: {"center_x": .49, "center_y": .8}
+                                on_release:
+                                    app.release()
+
+                            MDNavigationDrawerItem:
+                                icon: "cog"
+                                md_bg_color: 1, 1, .93
+                                text: "Settings"
+                                text_right_color: "#4a4939"
+                                pos_hint: {"center_x": .49, "center_y": .59}
+                                on_release:
+                                    app.release()
