@@ -1,10 +1,4 @@
-# https://kivy.org/doc/stable/api-kivy.app.html
-# https://habr.com/ru/post/527194/
-# https://kivymd.readthedocs.io/en/1.1.1/themes/icon-definitions/index.html
-# https://dribbble.com/shots?color=FB190E
-# self.fps_monitor_start()
-# https://ru.freepik.com/free-vector/set-of-avatar-silhouettes_1265960.htm#query=user&position=0&from_view=search&track=sph
-# https://kivymd.readthedocs.io/en/latest/components/navigationdrawer/
+# Messsenger
 
 from kivy.config import Config
 
