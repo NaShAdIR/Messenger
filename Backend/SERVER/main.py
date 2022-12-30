@@ -252,7 +252,7 @@ def send_avataricon(serversocket, clientsocket, icon,
 
 
 def client_thread(server_socket, client_socket):
-    database = sqlite3.connect('datebase.db')
+    database = sqlite3.connect('database.db')
     cursor = database.cursor()
 
     while True:
