@@ -24,10 +24,14 @@ class ServerSocketHandler(socket):
         self.bind(hp)
         self.listen(listen_count)
 
-    def __getattr__(self, attribute):
-        if attribute == "getclientsocket":
-            client_socket, adders = self.accept()
-            return client_socket
+    def getsocket(self):
+        client_socket, adders = self.accept()
+        return client_socket
+    
+#     def __getattr__(self, attribute):
+#         if attribute == "getclientsocket":
+#             client_socket, adders = self.accept()
+#             return client_socket
 
     def recv_handler(self, client_socket, json_loads=True, decoding=True):
         received_client = ''
@@ -84,23 +88,6 @@ class ServerSocketHandler(socket):
 
     def recv_json(self, content):
         return loads(content)
+    
+    getclientsocket = property(fget=getsocket)
 
-
-if __name__ == "__main__":
-    def call():
-        print("Error connecion!")
-        input()
-
-    my_socket = ServerSocketHandler("localhost", 5000, callback=call)
-    client_socket = my_socket.getclientsocket
-    user_widget = f'User_widget:Bob:' \
-                  f'Best Messenger:../assets/Images/19.jpg\n'
-    while True:
-        data = {
-            "Username": "Сейран",
-            "Surname": "Барсегян",
-            "Friends": user_widget
-        }
-        response = my_socket.recv_handler(client_socket, json_loads=True)
-        print(response)
-        my_socket.send_handler(client_socket, data, json_dumps=True)
