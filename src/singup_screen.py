@@ -37,7 +37,7 @@ class UsernameTextField(MDTextField):
         self.mode = "fill"
         self.fill_color_normal = (1, 1, 1, 0.1)
         self.fill_color_focus = (1, 1, 1, 0.3)
-        self.hint_text = "Имя"
+        self.hint_text = "Username"
         self.pos_hint = {"center_x": 0.5, "center_y": 0.66}
         self.font_size = "18sp"
         self.hint_text_color_focus = "black"
@@ -55,7 +55,7 @@ class SurnameTextField(MDTextField):
         self.mode = "fill"
         self.fill_color_normal = (1, 1, 1, 0.1)
         self.fill_color_focus = (1, 1, 1, 0.3)
-        self.hint_text = "Фамилие"
+        self.hint_text = "Surname"
         self.pos_hint = {"center_x": 0.5, "center_y": 0.54}
         self.font_size = "18sp"
         self.hint_text_color_focus = "black"
